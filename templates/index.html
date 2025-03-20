@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédiction Boston Housing</title>
+    <!--Intégration de Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Boston.css') }}">
+</head>
+<body>
+
+    <!--Barre de navigation-->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Prédiction Boston Housing</a>
+        </div>
+    </nav>
+    
+    <!--Contenu principal-->
+    <div class="container mt-5">
+        <div class="row">
+
+    <!-- Formulaire pour saisir manuellement les 13 caractéristiques -->
+    <div class="col-md-4">
+        <div class="card shadow-sm p-4">
+            <h4 class="text-center">Entrez les données</h4>
+            <form action="/predict" method="post">
+                <label for="crim">CRIM (Taux de criminalité) :</label>
+                <input type="number" id="crim" step="0.01" name="crim" class="form-control" required><br><br>
+        
+                <label for="zn">ZN (Proportion de terrains résidentiels) :</label>
+                <input type="number" id="zn" step="0.01" name="zn" class="form-control" required><br><br>
+        
+                <label for="indus">INDUS (Proportion d'industries non commerciales) :</label>
+                <input type="number" id="indus" step="0.01" name="indus" class="form-control" required><br><br>
+        
+                <label for="chas">CHAS (Bordure de rivière : 1 ou 0) :</label>
+                <input type="number" id="chas" step="0.01" name="chas" class="form-control" required><br><br>
+        
+                <label for="nox">NOX (Concentration en oxyde nitrique) :</label>
+                <input type="number" id="nox" step="0.01" name="nox" class="form-control" required><br><br>
+        
+                <label for="rm">RM (Nombre moyen de pièces) :</label>
+                <input type="number" id="rm" step="0.01" name="rm" class="form-control" required><br><br>
+        
+                <label for="age">AGE (Âge des maisons) :</label>
+                <input type="number" id="age" step="0.01" name="age" class="form-control" required><br><br>
+        
+                <label for="dis">DIS (Distance pondérée aux centres d'emploi) :</label>
+                <input type="number" id="dis" step="0.01" name="dis" class="form-control" required><br><br>
+        
+                <label for="tax">TAX (Taux d'imposition foncière) :</label>
+                <input type="number" id="tax" step="0.01" name="tax" class="form-control" required><br><br>
+    
+                <label for="ptratio">PTRATIO (Ratio élèves/enseignant) :</label>
+                <input type="number" id="ptratio" step="0.01" name="ptratio" class="form-control" required><br><br>
+        
+                <label for="b">B (Indice B, calculé à partir de la proportion de personnes afro-américaines) :</label>
+                <input type="number" id="b" step="0.01" name="b" class="form-control" required><br><br>
+        
+                <label for="lstat">LSTAT (Pourcentage de la population à faible statut) :</label>
+                <input type="number" id="lstat" step="0.01" name="lstat" class="form-control" required><br><br>
+        
+                <button type="submit" class="btn btn-primary w-100 mt-3">Prédire</button>
+            </form>
+        </div>
+    </div> 
+
+    <!-- Affichage de la prédiction si disponible -->
+    <div class="col-md-8">
+        <div class="card shadow-sm p-4 text-center">
+            <h4 class="mb-4">Prédiction</h4>
+            {% if prediction %}
+                <h2 class="text-success">Prix estimé : {{ prediction }} $</h2>
+            {% else %}
+                <p class="text-muted">Veuillez saisir les données pour obtenir une prédiction.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>

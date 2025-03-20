@@ -1,0 +1,78 @@
+/* Conteneur principal du formulaire */
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  
+    gap: 15px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Groupement des labels et inputs */
+.form-group {
+    width: 45%; /* Deux colonnes */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Appliquer l'image en arrière-plan */
+body {
+    background-image: url("Boston.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Champs de saisie */
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(80, 203, 80, 0.301);
+    outline: none;
+}
+
+/* Ajuster le titre */
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Bouton */
+button {
+    width: 50%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: bqckground-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Adaptation mobile */
+@media (max-width: 768px) {
+    .form-group {
+        width: 100%;
+    }
+    button {
+        width: 100%;
+    }
+}
